@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.eclipse.core.resources.IFile;
 import org.osate.aadl2.errormodel.analysis.Options;
 import org.osate.aadl2.instance.ComponentInstance;
 import org.osate.aadl2.modelsupport.WriteToFile;
@@ -22,7 +23,7 @@ import org.osate.xtext.aadl2.errormodel.util.PropagationPathEnd;
  *
  */
 public class Model {
-	private List<Module> modules;
+	public List<Module> modules;
 	private List<Formula> formulas;
 	private WriteToFile prismFile;
 	private ModelType type;
@@ -105,7 +106,7 @@ public class Model {
 	 * call the perform() method before so that the model
 	 * is processed and contains module to write.
 	 */
-	public void saveFile() {
+	public IFile saveFile() {
 		if (type == ModelType.DTMC) {
 			prismFile.addOutput("dtmc\n\n");
 		}
@@ -139,6 +140,7 @@ public class Model {
 		}
 
 		prismFile.saveToFile();
+		return prismFile.getFile();
 	}
 
 	/**

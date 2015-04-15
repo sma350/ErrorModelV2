@@ -44,11 +44,11 @@ import org.osate2.aadl2.errormodel.analysis.prism.expression.Terminal;
  */
 public class Module {
 	private List<Command> commands;
-	private ComponentInstance aadlComponent;
+	public ComponentInstance aadlComponent;
 	private int nStates;
 	private Model associatedModel;
 	private Map<String, Integer> statesMap;
-	private List<Formula> formulas;
+	public List<Formula> formulas;
 	private Map<String, Integer> vars;
 
 	/**
